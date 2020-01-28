@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo JournalVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PhotoJournalVC" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3F-Qe-7jo">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem image="plus" catalog="system" id="aSG-WC-l4x"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="58B-Vl-sdA"/>
+                                    <barButtonItem image="gear" catalog="system" id="hMH-1C-ZuQ"/>
+                                </items>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C5x-6d-dHj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3V7-Ax-eiL">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="C5x-6d-dHj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7WM-vC-0Dt"/>
+                            <constraint firstItem="C5x-6d-dHj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GK7-Ly-ddV"/>
+                            <constraint firstItem="N3F-Qe-7jo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ObF-Rv-eBB"/>
+                            <constraint firstItem="N3F-Qe-7jo" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="abi-lJ-qQ9"/>
+                            <constraint firstItem="N3F-Qe-7jo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dho-or-dkp"/>
+                            <constraint firstItem="N3F-Qe-7jo" firstAttribute="top" secondItem="C5x-6d-dHj" secondAttribute="bottom" symbolic="YES" id="hQ9-wk-MUv"/>
+                            <constraint firstItem="C5x-6d-dHj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tvK-ls-2yQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoJournalCollectionView" destination="C5x-6d-dHj" id="G6U-eP-tOX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42.028985507246382" y="89.732142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
