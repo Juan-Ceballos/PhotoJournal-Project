@@ -18,6 +18,8 @@
 		3E5ED41723DFA8EB001809C2 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ED41623DFA8EB001809C2 /* PhotoCell.xib */; };
 		3E5ED41923DFAA61001809C2 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ED41823DFAA61001809C2 /* PhotoCell.swift */; };
 		3E5ED41C23DFAEBA001809C2 /* PhotoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ED41B23DFAEBA001809C2 /* PhotoObject.swift */; };
+		3E5ED42123E07B6E001809C2 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ED42023E07B6E001809C2 /* PersistenceHelper.swift */; };
+		3E5ED42323E07BCE001809C2 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ED42223E07BCE001809C2 /* FileManager+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		3E5ED41623DFA8EB001809C2 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		3E5ED41823DFAA61001809C2 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3E5ED41B23DFAEBA001809C2 /* PhotoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoObject.swift; sourceTree = "<group>"; };
+		3E5ED42023E07B6E001809C2 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		3E5ED42223E07BCE001809C2 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				3E5ED3F223DF9ECB001809C2 /* ViewController.swift */,
+				3E5ED42023E07B6E001809C2 /* PersistenceHelper.swift */,
+				3E5ED42223E07BCE001809C2 /* FileManager+Extensions.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5ED41923DFAA61001809C2 /* PhotoCell.swift in Sources */,
+				3E5ED42323E07BCE001809C2 /* FileManager+Extensions.swift in Sources */,
+				3E5ED42123E07B6E001809C2 /* PersistenceHelper.swift in Sources */,
 				3E5ED3F323DF9ECB001809C2 /* ViewController.swift in Sources */,
 				3E5ED3EF23DF9ECB001809C2 /* AppDelegate.swift in Sources */,
 				3E5ED3F123DF9ECB001809C2 /* SceneDelegate.swift in Sources */,
