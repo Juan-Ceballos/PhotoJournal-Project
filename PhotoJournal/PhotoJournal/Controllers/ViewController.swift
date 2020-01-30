@@ -77,6 +77,15 @@ class PhotoJournalVC: UIViewController {
             
         }
     
+    @IBAction func addButtonPressed()   {
+        guard let addPhotoController = storyboard?.instantiateViewController(identifier: "AddPhotoController") as? AddPhotoController
+            else    {
+                fatalError()
+        }
+        
+        present(addPhotoController, animated: true)
+    }
+    
     private func loadImageObjects() {
         do  {
             photos = try dataPersistence.loadPhotos()
@@ -85,6 +94,10 @@ class PhotoJournalVC: UIViewController {
             print("loading error")
         }
     }
+    
+    
+    
+    
 }
 
 extension PhotoJournalVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
