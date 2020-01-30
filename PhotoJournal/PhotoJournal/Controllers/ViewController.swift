@@ -56,7 +56,6 @@ class PhotoJournalVC: UIViewController {
         
         let photoObject = PhotoObject(imageData: resizedImageData, date: Date())
             
-            
             // insert new imageObject into imageObjects
             photos.insert(photoObject, at: 0)
             
@@ -73,8 +72,6 @@ class PhotoJournalVC: UIViewController {
             catch   {
                 print("saving error \(error)")
             }
-            
-            
         }
     
     @IBAction func addButtonPressed()   {
@@ -82,8 +79,8 @@ class PhotoJournalVC: UIViewController {
             else    {
                 fatalError()
         }
-        
         present(addPhotoController, animated: true)
+        addPhotoController.photoSelectedDelegate = self
     }
     
     private func loadImageObjects() {
@@ -96,12 +93,10 @@ class PhotoJournalVC: UIViewController {
     }
     
     
-    
-    
 }
 
 extension PhotoJournalVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    /*
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // we need to access the UIIMagePickerController.InfoKey.originalImage key to get the
@@ -111,17 +106,13 @@ extension PhotoJournalVC: UIImagePickerControllerDelegate, UINavigationControlle
                 print("Image Selection Not Found")
                 return
         }
-        
         selectedImage = image
-        
-    }
+    }*/
 }
-        
 
 extension PhotoJournalVC: UICollectionViewDelegateFlowLayout    {
     
 }
-
 
 extension PhotoJournalVC: UICollectionViewDataSource    {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -133,13 +124,10 @@ extension PhotoJournalVC: UICollectionViewDataSource    {
             else    {
                 fatalError()
         }
-        
         let photoObject = photos[indexPath.row]
         cell.configureCell(photoObject: photoObject)
         return cell
     }
-    
-    
 }
 
 extension UIImage {
@@ -149,6 +137,12 @@ extension UIImage {
         return renderer.image { (context) in
             self.draw(in: CGRect(origin: .zero, size: size))
         }
+    }
+}
+
+extension PhotoJournalVC: PhotoSelectedDelegate {
+    func adjustPhoto(_ photo: UIImage) {
+        selectedImage = photo
     }
 }
 

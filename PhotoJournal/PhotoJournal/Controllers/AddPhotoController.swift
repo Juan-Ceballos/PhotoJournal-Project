@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PhotoSelectedDelegate: AnyObject {
+    func adjustPhoto(_ photo: UIImage)
+}
+
 class AddPhotoController: UIViewController {
     
     @IBOutlet weak var editablePhoto: UIImageView!
@@ -15,10 +19,14 @@ class AddPhotoController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var postTextView: UITextView!
     
+    weak var photoSelectedDelegate: PhotoSelectedDelegate?
+    
     private let imagePickerController = UIImagePickerController()
-    private var selectedImage: UIImage? {
+    
+    var selectedImage: UIImage? {
         didSet  {
             editablePhoto.image = selectedImage
+            photoSelectedDelegate?.adjustPhoto(selectedImage!)
         }
     }
     
@@ -57,8 +65,6 @@ extension AddPhotoController: UIImagePickerControllerDelegate, UINavigationContr
                 print("Image Selection Not Found")
                 return
         }
-        
         selectedImage = image
-        
     }
 }
