@@ -9,22 +9,56 @@
 import UIKit
 
 class AddPhotoController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var editablePhoto: UIImageView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var postTextView: UITextView!
+    
+    private let imagePickerController = UIImagePickerController()
+    private var selectedImage: UIImage? {
+        didSet  {
+            editablePhoto.image = selectedImage
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imagePickerController.delegate = self
     }
-    */
+    
+    @IBAction func photoLibraryButtonPressed(_ sender: UIBarButtonItem)    {
+        showImageController(isCameraSelected: false)
+    }
+    
+    private func showImageController(isCameraSelected: Bool)  {
+        // source type default wiil be .photoLibrary
+        imagePickerController.sourceType = .photoLibrary
+        if isCameraSelected {
+            imagePickerController.sourceType = .camera
+        }
+        present(imagePickerController, animated: true)
+    }
+    
+}
 
+extension AddPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // we need to access the UIIMagePickerController.InfoKey.originalImage key to get the
+        // UIImage that was selected
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            else    {
+                print("Image Selection Not Found")
+                return
+        }
+        
+        selectedImage = image
+        
+    }
 }

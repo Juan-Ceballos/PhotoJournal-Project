@@ -71,9 +71,13 @@
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Photo Library" id="5Pq-gG-dth"/>
+                                    <barButtonItem title="Photo Library" id="5Pq-gG-dth">
+                                        <connections>
+                                            <action selector="photoLibraryButtonPressed:" destination="0oW-sB-kvc" id="x5e-6e-Eaa"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JhF-Yg-Ile"/>
-                                    <barButtonItem image="camera.fill" catalog="system" id="HKs-i7-fLF"/>
+                                    <barButtonItem title="Camera" image="camera.fill" catalog="system" id="HKs-i7-fLF"/>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-T3-VM8">
@@ -103,6 +107,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1s8-SJ-2vR"/>
                     </view>
+                    <connections>
+                        <outlet property="editablePhoto" destination="Be1-T3-VM8" id="V9e-MS-Qf9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhX-4R-eY2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
