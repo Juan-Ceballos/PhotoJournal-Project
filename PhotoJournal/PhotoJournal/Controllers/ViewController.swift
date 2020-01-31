@@ -34,7 +34,6 @@ class PhotoJournalVC: UIViewController {
         photoJournalCollectionView.dataSource = self
         photoJournalCollectionView.delegate = self
         loadImageObjects()
-        imagePickerController.delegate = self
     }
     
     private func appendNewPhotoCollection() {
@@ -47,7 +46,7 @@ class PhotoJournalVC: UIViewController {
         
         // we will maintain the aspoect ratio of the image
         let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
-        let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
+        let resizeImage = image.resizeImage(to: rect.size.width * 0.25, height: rect.size.height * 0.25)
         
         guard let resizedImageData = resizeImage.jpegData(compressionQuality: 1.0)
             else    {
@@ -95,23 +94,12 @@ class PhotoJournalVC: UIViewController {
     
 }
 
-extension PhotoJournalVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    /*
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        // we need to access the UIIMagePickerController.InfoKey.originalImage key to get the
-        // UIImage that was selected
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            else    {
-                print("Image Selection Not Found")
-                return
-        }
-        selectedImage = image
-    }*/
-}
-
 extension PhotoJournalVC: UICollectionViewDelegateFlowLayout    {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = UIScreen.main.bounds.width
+        let itemWidth = screenWidth * 0.25
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
 }
 
 extension PhotoJournalVC: UICollectionViewDataSource    {
@@ -120,6 +108,7 @@ extension PhotoJournalVC: UICollectionViewDataSource    {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editablePhotoCell", for: indexPath) as? PhotoCell
             else    {
                 fatalError()
@@ -128,6 +117,7 @@ extension PhotoJournalVC: UICollectionViewDataSource    {
         cell.configureCell(photoObject: photoObject)
         return cell
     }
+    
 }
 
 extension UIImage {
