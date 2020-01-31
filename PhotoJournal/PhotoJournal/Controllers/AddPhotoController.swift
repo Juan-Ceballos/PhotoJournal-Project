@@ -26,10 +26,12 @@ class AddPhotoController: UIViewController {
     var selectedImage: UIImage? {
         didSet  {
             editablePhoto.image = selectedImage
-            photoSelectedDelegate?.adjustPhoto(selectedImage!)
         }
     }
     
+    @IBAction func buttonPressed(_ sender: UIButton)  {
+        photoSelectedDelegate?.adjustPhoto(selectedImage!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

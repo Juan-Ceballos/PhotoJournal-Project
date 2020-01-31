@@ -17,34 +17,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L2C-XI-kb5">
-                        <rect key="frame" x="0.0" y="0.0" width="241" height="154.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="241" height="178.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozP-wi-QV2">
-                        <rect key="frame" x="11" y="174.5" width="42" height="21"/>
+                        <rect key="frame" x="11" y="189.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEq-QS-4Bh">
-                        <rect key="frame" x="11" y="206.5" width="42" height="21"/>
+                        <rect key="frame" x="11" y="209" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIn-fR-lAH">
-                        <rect key="frame" x="214" y="162.5" width="19" height="22"/>
+                        <rect key="frame" x="214" y="186.5" width="19" height="22"/>
                         <state key="normal" image="ellipsis" catalog="system"/>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="L2C-XI-kb5" secondAttribute="trailing" id="9Ox-KI-o0C"/>
                     <constraint firstItem="L2C-XI-kb5" firstAttribute="top" secondItem="OVz-Ds-diA" secondAttribute="top" id="AnN-JM-dOi"/>
-                    <constraint firstItem="WEq-QS-4Bh" firstAttribute="top" secondItem="ozP-wi-QV2" secondAttribute="bottom" constant="11" id="E4Y-S6-orm"/>
                     <constraint firstItem="ozP-wi-QV2" firstAttribute="leading" secondItem="OVz-Ds-diA" secondAttribute="leading" constant="11" id="IgF-4G-tT2"/>
+                    <constraint firstAttribute="bottom" secondItem="WEq-QS-4Bh" secondAttribute="bottom" constant="8" id="O8h-nb-Rj8"/>
                     <constraint firstAttribute="trailing" secondItem="LIn-fR-lAH" secondAttribute="trailing" constant="8" id="XlV-AI-Eb1"/>
                     <constraint firstItem="L2C-XI-kb5" firstAttribute="leading" secondItem="OVz-Ds-diA" secondAttribute="leading" id="YcT-D2-LrM"/>
-                    <constraint firstItem="ozP-wi-QV2" firstAttribute="top" secondItem="L2C-XI-kb5" secondAttribute="bottom" constant="20" id="dnm-it-j65"/>
-                    <constraint firstItem="L2C-XI-kb5" firstAttribute="height" secondItem="OVz-Ds-diA" secondAttribute="height" multiplier="0.65" id="iPZ-yi-3w1"/>
+                    <constraint firstItem="ozP-wi-QV2" firstAttribute="top" secondItem="L2C-XI-kb5" secondAttribute="bottom" constant="11" id="dnm-it-j65"/>
+                    <constraint firstItem="L2C-XI-kb5" firstAttribute="height" secondItem="OVz-Ds-diA" secondAttribute="height" multiplier="0.75" id="iPZ-yi-3w1"/>
                     <constraint firstItem="WEq-QS-4Bh" firstAttribute="leading" secondItem="OVz-Ds-diA" secondAttribute="leading" constant="11" id="kUz-Vr-r6l"/>
                     <constraint firstItem="LIn-fR-lAH" firstAttribute="top" secondItem="L2C-XI-kb5" secondAttribute="bottom" constant="8" id="rXm-I5-guo"/>
                 </constraints>

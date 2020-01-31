@@ -93,6 +93,9 @@
                                 <rect key="frame" x="360" y="44" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="0oW-sB-kvc" eventType="touchUpInside" id="S3R-BH-24m"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-VJ-uoZ">
                                 <rect key="frame" x="0.0" y="82" width="414" height="294"/>

@@ -34,6 +34,7 @@ class PhotoJournalVC: UIViewController {
         photoJournalCollectionView.dataSource = self
         photoJournalCollectionView.delegate = self
         loadImageObjects()
+        photoJournalCollectionView.backgroundColor = .systemTeal
     }
     
     private func appendNewPhotoCollection() {
@@ -45,8 +46,8 @@ class PhotoJournalVC: UIViewController {
         let size = UIScreen.main.bounds.size
         
         // we will maintain the aspoect ratio of the image
-        let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
-        let resizeImage = image.resizeImage(to: rect.size.width * 0.25, height: rect.size.height * 0.25)
+        let rect = AVMakeRect(aspectRatio: CGSize(width: 1080, height: 1080), insideRect: CGRect(origin: CGPoint.zero, size: size))
+        let resizeImage = image.resizeImage(to: rect.size.width * 0.25, height: rect.size.height * 0.2)
         
         guard let resizedImageData = resizeImage.jpegData(compressionQuality: 1.0)
             else    {
@@ -95,11 +96,7 @@ class PhotoJournalVC: UIViewController {
 }
 
 extension PhotoJournalVC: UICollectionViewDelegateFlowLayout    {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = UIScreen.main.bounds.width
-        let itemWidth = screenWidth * 0.25
-        return CGSize(width: itemWidth, height: itemWidth)
-    }
+    
 }
 
 extension PhotoJournalVC: UICollectionViewDataSource    {
@@ -115,6 +112,7 @@ extension PhotoJournalVC: UICollectionViewDataSource    {
         }
         let photoObject = photos[indexPath.row]
         cell.configureCell(photoObject: photoObject)
+        cell.backgroundColor = .systemOrange
         return cell
     }
     
