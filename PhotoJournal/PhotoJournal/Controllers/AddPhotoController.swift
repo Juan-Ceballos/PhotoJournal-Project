@@ -29,9 +29,7 @@ class AddPhotoController: UIViewController {
         }
     }
     
-    @IBAction func buttonPressed(_ sender: UIButton)  {
-        photoSelectedDelegate?.adjustPhoto(selectedImage!)
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +38,14 @@ class AddPhotoController: UIViewController {
     
     @IBAction func photoLibraryButtonPressed(_ sender: UIBarButtonItem)    {
         showImageController(isCameraSelected: false)
+    }
+    
+    @IBAction func cancelButtonPressed(_sender: UIButton)   {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton)  {
+        photoSelectedDelegate?.adjustPhoto(selectedImage!)
     }
     
     private func showImageController(isCameraSelected: Bool)  {

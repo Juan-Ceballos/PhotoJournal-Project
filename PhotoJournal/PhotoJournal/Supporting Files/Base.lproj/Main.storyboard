@@ -88,13 +88,16 @@
                                 <rect key="frame" x="20" y="44" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressedWith_sender:" destination="0oW-sB-kvc" eventType="touchUpInside" id="tft-Xb-9Tx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqH-9e-1Iz">
                                 <rect key="frame" x="360" y="44" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="0oW-sB-kvc" eventType="touchUpInside" id="S3R-BH-24m"/>
+                                    <action selector="saveButtonPressed:" destination="0oW-sB-kvc" eventType="touchUpInside" id="S3R-BH-24m"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-VJ-uoZ">
@@ -111,6 +114,7 @@
                         <viewLayoutGuide key="safeArea" id="1s8-SJ-2vR"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Zc3-bl-Rpo" id="T3K-DY-nbD"/>
                         <outlet property="editablePhoto" destination="Be1-T3-VM8" id="V9e-MS-Qf9"/>
                     </connections>
                 </viewController>
