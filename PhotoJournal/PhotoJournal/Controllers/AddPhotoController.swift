@@ -68,5 +68,6 @@ extension AddPhotoController: UIImagePickerControllerDelegate, UINavigationContr
                 return
         }
         selectedImage = image
+        dismiss(animated: true)
     }
 }
