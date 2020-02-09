@@ -14,11 +14,16 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoComment: UILabel!
     @IBOutlet weak var photoDatePosted: UILabel!
     
+    
+    
     func configureCell(photoObject: PhotoObject)    {
         guard let photo = UIImage(data: photoObject.imageData)
             else    {
                 return
         }
         photoImage.image = photo
+        photoComment.text = UserInfo.shared.getComment()
     }
 }
+
+

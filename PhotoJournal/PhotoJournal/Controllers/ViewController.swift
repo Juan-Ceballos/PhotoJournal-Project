@@ -22,11 +22,9 @@ class PhotoJournalVC: UIViewController {
     
     private var selectedImage: UIImage? {
         didSet  {
-            // gets called when new image is selected
             appendNewPhotoCollection()
         }
     }
-    
     
     
     override func viewDidLoad() {

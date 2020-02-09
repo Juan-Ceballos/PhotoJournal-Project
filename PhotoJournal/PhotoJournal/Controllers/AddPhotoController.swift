@@ -20,7 +20,7 @@ class AddPhotoController: UIViewController {
     @IBOutlet weak var postTextView: UITextView!
         
     weak var photoSelectedDelegate: PhotoSelectedDelegate?
-    
+        
     private let imagePickerController = UIImagePickerController()
     
     var selectedImage: UIImage? {
@@ -125,6 +125,7 @@ extension AddPhotoController: UITextViewDelegate   {
             textView.resignFirstResponder()
             return false
         }
+        UserInfo.shared.updateComment(comment: textView.text)
         return true
     }
 }
