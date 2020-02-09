@@ -19,7 +19,6 @@ class PhotoJournalVC: UIViewController {
     private let imagePickerController = UIImagePickerController()
     
     private let dataPersistence = PersistenceHelper(filename: "photos.plist")
-
     
     private var selectedImage: UIImage? {
         didSet  {
@@ -27,6 +26,8 @@ class PhotoJournalVC: UIViewController {
             appendNewPhotoCollection()
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

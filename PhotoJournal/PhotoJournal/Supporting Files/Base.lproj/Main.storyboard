@@ -67,9 +67,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-qS-ydJ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-qS-ydJ">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CEi-x0-6ZC"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Photo Library" id="5Pq-gG-dth">
                                         <connections>
@@ -80,42 +82,58 @@
                                     <barButtonItem title="Camera" image="camera.fill" catalog="system" id="HKs-i7-fLF"/>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-T3-VM8">
-                                <rect key="frame" x="0.0" y="384" width="414" height="434"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-T3-VM8">
+                                <rect key="frame" x="0.0" y="470" width="414" height="319"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-bl-Rpo">
-                                <rect key="frame" x="20" y="44" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelButtonPressedWith_sender:" destination="0oW-sB-kvc" eventType="touchUpInside" id="tft-Xb-9Tx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqH-9e-1Iz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqH-9e-1Iz">
                                 <rect key="frame" x="360" y="44" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="0oW-sB-kvc" eventType="touchUpInside" id="S3R-BH-24m"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-VJ-uoZ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-VJ-uoZ">
                                 <rect key="frame" x="0.0" y="82" width="414" height="294"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="294" id="qIb-kz-SfL"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-bl-Rpo">
+                                <rect key="frame" x="20" y="44" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressedWith_sender:" destination="0oW-sB-kvc" eventType="touchUpInside" id="tft-Xb-9Tx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="top" secondItem="oqH-9e-1Iz" secondAttribute="bottom" constant="8" symbolic="YES" id="434-0e-14t"/>
+                            <constraint firstItem="oqH-9e-1Iz" firstAttribute="trailing" secondItem="Djh-pq-P48" secondAttribute="trailingMargin" id="4FC-fp-wIZ"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="trailing" secondItem="Be1-T3-VM8" secondAttribute="trailing" id="Bx3-dd-FaE"/>
+                            <constraint firstItem="bCa-qS-ydJ" firstAttribute="bottom" secondItem="1s8-SJ-2vR" secondAttribute="bottom" id="GT3-Ee-F8L"/>
+                            <constraint firstItem="bCa-qS-ydJ" firstAttribute="top" secondItem="Be1-T3-VM8" secondAttribute="bottom" constant="27.5" id="HyF-NR-wAC"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="trailing" secondItem="bCa-qS-ydJ" secondAttribute="trailing" id="S0c-2Z-YGZ"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="leading" secondItem="bCa-qS-ydJ" secondAttribute="leading" id="Xr2-oL-jIT"/>
+                            <constraint firstAttribute="trailing" secondItem="vlo-VJ-uoZ" secondAttribute="trailing" id="Z6B-l4-f8W"/>
+                            <constraint firstItem="Be1-T3-VM8" firstAttribute="top" secondItem="vlo-VJ-uoZ" secondAttribute="bottom" constant="93" id="g47-hR-MIl"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="leading" secondItem="Be1-T3-VM8" secondAttribute="leading" id="pVN-7k-FMe"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="top" secondItem="Zc3-bl-Rpo" secondAttribute="bottom" constant="8" symbolic="YES" id="sSr-Qp-iGd"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="top" secondItem="Djh-pq-P48" secondAttribute="top" constant="82" id="uYf-jz-FhO"/>
+                            <constraint firstItem="Zc3-bl-Rpo" firstAttribute="leading" secondItem="Djh-pq-P48" secondAttribute="leadingMargin" id="wZt-UR-ACY"/>
+                            <constraint firstItem="vlo-VJ-uoZ" firstAttribute="leading" secondItem="Djh-pq-P48" secondAttribute="leading" id="xbm-Wb-8SC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1s8-SJ-2vR"/>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Zc3-bl-Rpo" id="T3K-DY-nbD"/>
                         <outlet property="editablePhoto" destination="Be1-T3-VM8" id="V9e-MS-Qf9"/>
+                        <outlet property="postTextView" destination="vlo-VJ-uoZ" id="of3-sL-T1X"/>
+                        <outlet property="saveButton" destination="oqH-9e-1Iz" id="Bea-VV-Qlu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhX-4R-eY2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,6 +144,7 @@
     <resources>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="photo.fill" catalog="system" width="64" height="46"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>

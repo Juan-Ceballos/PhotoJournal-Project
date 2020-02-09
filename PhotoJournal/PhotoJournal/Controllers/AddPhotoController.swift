@@ -18,7 +18,7 @@ class AddPhotoController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var postTextView: UITextView!
-    
+        
     weak var photoSelectedDelegate: PhotoSelectedDelegate?
     
     private let imagePickerController = UIImagePickerController()
@@ -29,11 +29,37 @@ class AddPhotoController: UIViewController {
         }
     }
     
+    var currentEnteredText = ""    {
+        didSet  {
+            postTextView.text = currentEnteredText
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        postTextView.delegate = self
+        postTextView.text = "Say Something"
+        postTextView.textColor = .systemGray
+        checkForEmptyTextView()
+        saveButton.isEnabled = false
+    }
+    
+    func checkForEmptyTextView()   {
+        if postTextView.text == ""  {
+            postTextView.text = "Say Something"
+            postTextView.textColor = .systemGray
+        }
+    }
+    
+    func saveStatus()   {
+        if selectedImage == UIImage(named: "photo.fill") || postTextView.text == "Say Something" || postTextView.text == ""   {
+            saveButton.isEnabled = false
+        }
+        else    {
+            saveButton.isEnabled = true
+        }
     }
     
     @IBAction func photoLibraryButtonPressed(_ sender: UIBarButtonItem)    {
@@ -46,6 +72,7 @@ class AddPhotoController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton)  {
         photoSelectedDelegate?.adjustPhoto(selectedImage!)
+        dismiss(animated: true)
     }
     
     private func showImageController(isCameraSelected: Bool)  {
@@ -62,6 +89,7 @@ class AddPhotoController: UIViewController {
 extension AddPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+        checkForEmptyTextView()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -75,5 +103,28 @@ extension AddPhotoController: UIImagePickerControllerDelegate, UINavigationContr
         }
         selectedImage = image
         dismiss(animated: true)
+        checkForEmptyTextView()
+        saveStatus()
+    }
+}
+
+extension AddPhotoController: UITextViewDelegate   {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Say Something" && textView.textColor == .systemGray    {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        saveStatus()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }
