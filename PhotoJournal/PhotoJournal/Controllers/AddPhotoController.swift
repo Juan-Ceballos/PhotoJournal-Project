@@ -121,11 +121,11 @@ extension AddPhotoController: UITextViewDelegate   {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        UserInfo.shared.updateComment(comment: textView.text)
         if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
-        UserInfo.shared.updateComment(comment: textView.text)
         return true
     }
 }

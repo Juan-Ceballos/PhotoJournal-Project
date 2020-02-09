@@ -12,4 +12,9 @@ struct PhotoObject: Codable {
     let imageData: Data
     let date: Date
     let identifier = UUID().uuidString
+    
+    var photoComment: String {
+        guard let comment = UserInfo.shared.getComment() else { return "" }
+        return comment
+    }
 }
