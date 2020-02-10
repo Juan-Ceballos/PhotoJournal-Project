@@ -13,8 +13,12 @@ struct PhotoObject: Codable {
     let date: Date
     let identifier = UUID().uuidString
     
-    var photoComment: String {
-        guard let comment = UserInfo.shared.getComment() else { return "" }
-        return comment
+    var convertedDate: String  {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        return localDate
     }
 }

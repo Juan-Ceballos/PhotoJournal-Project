@@ -23,6 +23,9 @@ class PhotoCell: UICollectionViewCell {
         }
         photoImage.image = photo
         photoComment.text = UserInfo.shared.getComment()
+        photoComment.font = .boldSystemFont(ofSize: 20)
+        photoDatePosted.text = photoObject.convertedDate
+        
     }
 }
 
