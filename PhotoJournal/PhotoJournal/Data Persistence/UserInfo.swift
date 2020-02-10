@@ -25,7 +25,7 @@ class UserInfo  {
         guard let commentToPost = UserDefaults.standard.object(forKey: UserInfoKeys.commentPost) as? String
             else    {
                 return nil
-        }
+            }
         return commentToPost
     }
 }

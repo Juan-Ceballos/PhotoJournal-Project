@@ -46,6 +46,9 @@
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" image="ellipsis" catalog="system"/>
+                        <connections>
+                            <action selector="editButtonPressed:" destination="gre-gg-HgP" eventType="touchUpInside" id="i7O-xT-Ng5"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -63,6 +66,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="241" height="238"/>
             <connections>
+                <outlet property="eidtButton" destination="LIn-fR-lAH" id="hsM-CW-QKZ"/>
                 <outlet property="photoButton" destination="LIn-fR-lAH" id="PcA-6m-kKb"/>
                 <outlet property="photoComment" destination="ozP-wi-QV2" id="M0A-PU-cfg"/>
                 <outlet property="photoDatePosted" destination="WEq-QS-4Bh" id="FHr-MK-t5S"/>

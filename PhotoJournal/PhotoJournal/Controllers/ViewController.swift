@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import AVFoundation // rectmaker
+import AVFoundation
 
 class PhotoJournalVC: UIViewController {
     
     @IBOutlet weak var photoJournalCollectionView: UICollectionView!
     
-
+    
     private var photos = [PhotoObject]()
     
     private let imagePickerController = UIImagePickerController()
@@ -37,11 +37,11 @@ class PhotoJournalVC: UIViewController {
     }
     
     private func appendNewPhotoCollection() {
-    guard let image = selectedImage
-        else    {
-            print("image is nil")
-            return
-    }
+        guard let image = selectedImage
+            else    {
+                print("image is nil")
+                return
+        }
         let size = UIScreen.main.bounds.size
         
         // we will maintain the aspoect ratio of the image
@@ -54,24 +54,25 @@ class PhotoJournalVC: UIViewController {
         }
         
         let photoObject = PhotoObject(imageData: resizedImageData, date: Date())
-            
-            // insert new imageObject into imageObjects
-            photos.insert(photoObject, at: 0)
-            
-            // create an indexPath for insertion into collection view
-            let indexPath = IndexPath(row: 0, section: 0)
-            
-            // insert new cell into collection view
-            photoJournalCollectionView.insertItems(at: [indexPath])
-            
-            // persist imageObject to documents directory
-            do  {
-                try dataPersistence.create(event: photoObject)
-            }
-            catch   {
-                print("saving error \(error)")
-            }
+        
+        // insert new imageObject into imageObjects
+        photos.insert(photoObject, at: 0)
+        
+        // create an indexPath for insertion into collection view
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        // insert new cell into collection view
+        photoJournalCollectionView.insertItems(at: [indexPath])
+        
+        // persist imageObject to documents directory
+        do  {
+            try dataPersistence.create(event: photoObject)
         }
+        catch   {
+            print("saving error \(error)")
+        }
+    }
+    
     
     @IBAction func addButtonPressed()   {
         guard let addPhotoController = storyboard?.instantiateViewController(identifier: "AddPhotoController") as? AddPhotoController
@@ -81,6 +82,8 @@ class PhotoJournalVC: UIViewController {
         present(addPhotoController, animated: true)
         addPhotoController.photoSelectedDelegate = self
     }
+    
+    
     
     private func loadImageObjects() {
         do  {
@@ -130,6 +133,24 @@ extension UIImage {
 extension PhotoJournalVC: PhotoSelectedDelegate {
     func adjustPhoto(_ photo: UIImage) {
         selectedImage = photo
+    }
+}
+
+extension PhotoJournalVC: ButtonPressedDelegate {
+    func alertPressed(_ pressed: Bool) {
+        
+        if pressed == true  {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self] alertAction in
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            
+            alertController.addAction(editAction)
+            alertController.addAction(cancelAction)
+        }
     }
 }
 
