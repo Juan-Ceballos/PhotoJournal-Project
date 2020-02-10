@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ButtonPressedDelegate: AnyObject   {
-    func alertPressed(_ pressed: Bool)
+    func alertPressed(_ pressed: PhotoCell)
 }
 
 class PhotoCell: UICollectionViewCell {
@@ -24,7 +24,7 @@ class PhotoCell: UICollectionViewCell {
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
         
-        buttonPressedDelegate?.alertPressed(true)
+        buttonPressedDelegate?.alertPressed(self)
 //
 //        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 //

@@ -34,6 +34,9 @@ class PhotoJournalVC: UIViewController {
         photoJournalCollectionView.delegate = self
         loadImageObjects()
         photoJournalCollectionView.backgroundColor = .systemTeal
+        
+        
+        
     }
     
     private func appendNewPhotoCollection() {
@@ -115,6 +118,7 @@ extension PhotoJournalVC: UICollectionViewDataSource    {
         let photoObject = photos[indexPath.row]
         cell.configureCell(photoObject: photoObject)
         cell.backgroundColor = .systemOrange
+        cell.buttonPressedDelegate = self
         return cell
     }
     
@@ -137,20 +141,18 @@ extension PhotoJournalVC: PhotoSelectedDelegate {
 }
 
 extension PhotoJournalVC: ButtonPressedDelegate {
-    func alertPressed(_ pressed: Bool) {
+    func alertPressed(_ pressed: PhotoCell) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        if pressed == true  {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self] alertAction in
             
-            let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self] alertAction in
-                
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            
-            alertController.addAction(editAction)
-            alertController.addAction(cancelAction)
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        alertController.addAction(editAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
 }
 
