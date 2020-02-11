@@ -12,8 +12,7 @@ import AVFoundation
 class PhotoJournalVC: UIViewController {
     
     @IBOutlet weak var photoJournalCollectionView: UICollectionView!
-    
-    
+        
     private var photos = [PhotoObject]()
     
     private let imagePickerController = UIImagePickerController()
@@ -26,7 +25,12 @@ class PhotoJournalVC: UIViewController {
         }
     }
     
-    
+    var selectedText: String?   {
+        didSet  {
+            appendNewPhotoCollection()
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         photoJournalCollectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "editablePhotoCell")
@@ -34,9 +38,6 @@ class PhotoJournalVC: UIViewController {
         photoJournalCollectionView.delegate = self
         loadImageObjects()
         photoJournalCollectionView.backgroundColor = .systemTeal
-        
-        
-        
     }
     
     private func appendNewPhotoCollection() {
@@ -44,7 +45,11 @@ class PhotoJournalVC: UIViewController {
             else    {
                 print("image is nil")
                 return
-        }
+            }
+        
+        let comment = selectedText ?? "hey"
+        
+        
         let size = UIScreen.main.bounds.size
         
         // we will maintain the aspoect ratio of the image
@@ -56,7 +61,7 @@ class PhotoJournalVC: UIViewController {
                 return
         }
         
-        let photoObject = PhotoObject(imageData: resizedImageData, date: Date())
+        let photoObject = PhotoObject(imageData: resizedImageData, date: Date(), photoComment: comment)
         
         // insert new imageObject into imageObjects
         photos.insert(photoObject, at: 0)
@@ -84,6 +89,7 @@ class PhotoJournalVC: UIViewController {
         }
         present(addPhotoController, animated: true)
         addPhotoController.photoSelectedDelegate = self
+        addPhotoController.photoCommentDelagate = self
     }
     
     
@@ -140,15 +146,36 @@ extension PhotoJournalVC: PhotoSelectedDelegate {
     }
 }
 
+extension PhotoJournalVC: PhotoCommentDelegate  {
+    func adjustComment(_ photoObject: String) {
+        selectedText = photoObject
+    }
+}
+
 extension PhotoJournalVC: ButtonPressedDelegate {
     func alertPressed(_ pressed: PhotoCell) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self] alertAction in
             
+            guard let addPhotoController = self?.storyboard?.instantiateViewController(identifier: "AddPhotoController") as? AddPhotoController
+                else    {
+                    fatalError()
+            }
+            
+            self?.present(addPhotoController, animated: true)
+            addPhotoController.selectedImage = pressed.photoImage.image
+            addPhotoController.postTextView.text = pressed.photoComment.text
+            addPhotoController.postTextView.textColor = .black
+            addPhotoController.photoLibraryButton.isEnabled = false
+            addPhotoController.photoSelectedDelegate = self
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] alertAction in
+            
+        }
         
         alertController.addAction(editAction)
         alertController.addAction(cancelAction)

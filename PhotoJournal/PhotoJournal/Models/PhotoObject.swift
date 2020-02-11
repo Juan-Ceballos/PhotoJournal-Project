@@ -21,4 +21,6 @@ struct PhotoObject: Codable {
         let localDate = dateFormatter.string(from: date)
         return localDate
     }
+    
+    var photoComment: String
 }

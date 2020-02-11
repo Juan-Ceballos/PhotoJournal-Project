@@ -12,14 +12,20 @@ protocol PhotoSelectedDelegate: AnyObject {
     func adjustPhoto(_ photo: UIImage)
 }
 
+protocol PhotoCommentDelegate: AnyObject {
+    func adjustComment(_ photoObject: String)
+}
+
 class AddPhotoController: UIViewController {
     
     @IBOutlet weak var editablePhoto: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var postTextView: UITextView!
-        
+    @IBOutlet weak var photoLibraryButton: UIBarButtonItem!
+    
     weak var photoSelectedDelegate: PhotoSelectedDelegate?
+    weak var photoCommentDelagate: PhotoCommentDelegate?
         
     private let imagePickerController = UIImagePickerController()
     
@@ -29,7 +35,7 @@ class AddPhotoController: UIViewController {
         }
     }
     
-    var currentEnteredText = ""    {
+    var currentEnteredText: String?    {
         didSet  {
             postTextView.text = currentEnteredText
         }
@@ -54,7 +60,7 @@ class AddPhotoController: UIViewController {
     }
     
     func saveStatus()   {
-        if selectedImage == UIImage(named: "photo.fill") || postTextView.text == "Say Something" || postTextView.text == ""   {
+        if selectedImage == UIImage(named: "photo.fill") || (postTextView.text == "Say Something" && postTextView.textColor == .systemGray) || postTextView.text == ""   {
             saveButton.isEnabled = false
         }
         else    {
@@ -72,6 +78,7 @@ class AddPhotoController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton)  {
         photoSelectedDelegate?.adjustPhoto(selectedImage!)
+        photoCommentDelagate?.adjustComment(currentEnteredText!)
         dismiss(animated: true)
     }
     
@@ -121,8 +128,11 @@ extension AddPhotoController: UITextViewDelegate   {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        UserInfo.shared.updateComment(comment: textView.text)
+        
+        currentEnteredText = textView.text
+
         if text == "\n" {
+
             textView.resignFirstResponder()
             return false
         }
